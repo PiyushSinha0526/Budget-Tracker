@@ -1,18 +1,28 @@
 import React from "react";
 
+import { useTransactions } from "../../useTransactions";
+import Form from "../Form/Form";
+import List from "../List/List";
+import Pictorial from "../Pictorial/Pictorial";
+
 const Main = () => {
+  const { total: income, chartData: incomeData } = useTransactions("Income");
+  const { total: expense, chartData: expenseData } = useTransactions("Expense");
   return (
     <div className="container bg-gray-500 px-8 py-8 flex flex-col gap-4">
-      <h2 className="uppercase text-3xl text-center">Budget Tracker</h2>
-      <div>
-        <h3 className="uppercase">Your Balance</h3>
-        <span>$1982</span>
+      <h2 className="uppercase text-3xl text-center font-bold">Budget Tracker</h2>
+      <div className="flex gap-4 text-white font-bold text-lg">
+        <h3 className="uppercase ">Balance</h3>
+        <span>${income - expense}</span>
       </div>
-      <div className="flex gap-6 justify-center text-center items-center px-4 py-4">
-          <div>Income <span>$1082</span></div>
-          <div className="bg-black w-16 h-16 rounded-full"></div>
-          <div>Expense <span>$900</span></div>
-      </div>
+      <Form />
+      <List />
+      <Pictorial
+        income={income}
+        expense={expense}
+        incomeData={incomeData}
+        expenseData={expenseData}
+      />
     </div>
   );
 };
