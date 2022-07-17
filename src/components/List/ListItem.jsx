@@ -1,9 +1,9 @@
 import React from "react";
 
 const ListItem = ({ data, deleteTransaction }) => {
-  const { amount, category, type, id } = data;
+  const { amount, category, type, id, date } = data;
   return (
-    <li className="px-3 py-2 mr-3 flex justify-between items-center rounded-md shadow-md 
+    <li className="px-3 py-2 mr-1 flex justify-between items-center rounded-md shadow-lg bg-white border-2 hover:border-purple_mid
     ">
       <div className="flex gap-2 items-center">
         <svg
@@ -11,7 +11,7 @@ const ListItem = ({ data, deleteTransaction }) => {
           className="h-6 w-6"
           fill="none"
           viewBox="0 0 24 24"
-          stroke={type.toLowerCase()==='income'?"green": 'red'}
+          stroke={type.toLowerCase() === 'income' ? "green" : 'red'}
           strokeWidth={2}
         >
           <path
@@ -26,7 +26,7 @@ const ListItem = ({ data, deleteTransaction }) => {
             <span>${amount}</span>
           </div>
           <div className="relative">
-            <span className="mr-4">20 may 2022</span>
+            <span className="mr-4">{date}</span>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ const ListItem = ({ data, deleteTransaction }) => {
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
-        onClick={()=>deleteTransaction(id)}
+        onClick={() => deleteTransaction(id)}
       >
         <path
           strokeLinecap="round"

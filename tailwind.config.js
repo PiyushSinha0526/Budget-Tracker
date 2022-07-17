@@ -4,9 +4,15 @@ module.exports = {
      './public/**/*.html',
      './src/**/*.{js,jsx,ts,tsx,vue}',
    ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        blue_dark: '#1E293B',
+        purple_mid: '#845ec2',
+        purple_light: '#9b89b3',
+      },
+    },
   },
   variants: {
     extend: {},
